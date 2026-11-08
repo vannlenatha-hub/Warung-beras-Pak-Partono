@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Warung Beras Pak Partono</title>
+  <link rel="stylesheet" href="Project.css">
+  <!-- Font Awesome buat ikon Cart & WA -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  
+  <header class="header-banner">
+    <h1>Selamat datang di web toko Pak Partono</h1>
+    <h2>Menyediakan berbagai jenis beras dengan harga murah!</h2>
+  </header>
+
+  <!-- Tombol Floating Cart di Pojok Kanan Atas -->
+  <button class="cart-floating-btn" onclick="toggleCart()">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <span id="cart-badge" class="badge">0</span>
+  </button>
+
+  <div class="container">
+    <!-- Kotak Produk (7 Produk Sesuai List) -->
+    <div class="kotak" onclick="openProductModal('Beras Pandan Wangi', 18000, 'beras1.jpg')">
+      <img src="beras1.jpg" alt="Beras Pandan Wangi">
+      <p>Beras Pandan Wangi</p>
+      <span class="harga">Rp 18.000 / liter</span>
+    </div>
+
+    <div class="kotak" onclick="openProductModal('Beras Rojolele', 13000, 'beras2.jpg')">
+      <img src="beras2.jpg" alt="Beras Rojolele">
+      <p>Beras Rojolele</p>
+      <span class="harga">Rp 13.000 / liter</span>
+    </div>
+
+    <div class="kotak" onclick="openProductModal('Beras Merah', 16000, 'beras3.jpg')">
+      <img src="beras3.jpg" alt="Beras Merah">
+      <p>Beras Merah</p>
+      <span class="harga">Rp 16.000 / liter</span>
+    </div>
+
+    <div class="kotak" onclick="openProductModal('Beras Ramos', 14000, 'beras4.jpg')">
+      <img src="beras4.jpg" alt="Beras Ramos">
+      <p>Beras Ramos</p>
+      <span class="harga">Rp 14.000 / liter</span>
+    </div>
+
+    <div class="kotak" onclick="openProductModal('Beras Saigon Bandung', 15000, 'beras5.jpg')">
+      <img src="beras5.jpg" alt="Beras Saigon Bandung">
+      <p>Beras Saigon Bandung</p>
+      <span class="harga">Rp 15.000 / liter</span>
+    </div>
+
+    <div class="kotak" onclick="openProductModal('Beras Ketan', 22000, 'beras6.jpg')">
+      <img src="beras6.jpg" alt="Beras Ketan">
+      <p>Beras Ketan</p>
+      <span class="harga">Rp 22.000 / liter</span>
+    </div>
+
+    <div class="kotak" onclick="openProductModal('Beras Pera', 15000, 'beras7.jpg')">
+      <img src="beras7.jpg" alt="Beras Pera">
+      <p>Beras Pera</p>
+      <span class="harga">Rp 15.000 / liter</span>
+    </div>
+  </div>
+
+  <!-- POPUP MODAL PILIH PRODUK -->
+  <div id="product-modal" class="modal">
+    <div class="modal-content">
+      <h3 id="modal-title">Tambah Pesanan</h3>
+      <p id="modal-desc"></p>
+      <div class="qty-input">
+        <label>Jumlah (liter):</label>
+        <input type="number" id="modal-qty" value="1" min="1">
+      </div>
+      <div class="modal-buttons">
+        <button class="btn-cancel" onclick="closeProductModal()">Tidak</button>
+        <button class="btn-confirm" onclick="confirmAddToCart()">Tambah</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIDEBAR CART (KERANJANG PESANAN) -->
+  <div id="cart-sidebar" class="cart-sidebar">
+    <div class="cart-hseader">
+      <h3><i class="fa-solid fa-cart-shopping"></i> Keranjang Belanja</h3>
+      <button class="close-cart" onclick="toggleCart()">&times;</button>
+    </div>
+
+    <div class="cart-body">
+      <!-- Form Data Diri Wajib -->
+      <div class="form-section">
+        <h4>Data Pembeli (Wajib)</h4>
+        <input type="text" id="buyer-name" placeholder="Nama Pembeli *" required>
+        <input type="tel" id="buyer-phone" placeholder="Nomor HP/WA *" required>
+        <input type="text" id="payment-method" placeholder="Metode Pembayaran (QRIS/Debit/Cash) *" required>
+      </div>
+
+      <hr class="divider">
+
+      <h4>Daftar Pesanan</h4>
+      <div id="cart-items" class="cart-items">
+        <p class="empty-msg">Keranjang masih kosong.</p>
+      </div>
+    </div>
+
+    <div class="cart-footer">
+      <div class="total-price-box">
+        <span>Total:</span>
+        <strong id="cart-total">Rp 0</strong>
+      </div>
+      <button class="btn-order-wa" onclick="sendToWhatsApp()">
+        <i class="fa-brands fa-whatsapp"></i> Pesan via WhatsApp
+      </button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
